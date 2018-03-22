@@ -1,0 +1,30 @@
+<div class="input-group">
+  <input type="text" class="form-control" [placeholder]="placeholder"
+         [v7CurrencyFormatter]="defaultValue"
+         (v7CurrencyFormatterNewFormattedValue)="onNewFormattedValue($event)"
+         (v7CurrencyFormatterNewPlainValue)="onNewPlainValue($event)">
+
+  <div class="input-group-append" ngbDropdown role="group">
+    <button class="input-group-text" ngbDropdownToggle>{{currencyEnum.symbol(currency)}}</button>
+    <div class="dropdown-menu" ngbDropdownMenu>
+      <button *ngFor="let item of currencyEnum.lovSymbols()"
+              class="dropdown-item"
+              (click)="onClick(currencyEnum[item.value])">{{item.label}}
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<div>
+  <b>Selektierte Währung:</b>
+  {{currencyEnum.label(currency)}}
+</div>
+<div>
+  <b>Benutzereingabe:</b>
+  {{userInput}}
+</div>
+<div>
+  <b>Eingebener Betrag:</b>
+  {{plainNumber}}
+</div>
